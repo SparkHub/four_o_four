@@ -42,7 +42,7 @@ application. On rails can be done like this:
 module YourAwesomeApp
   class Application < Rails::Application
     # .... extra configuration
-    config.middleware.use 'FourOuFour'
+    config.middleware.use 'FourOFour'
   end
 end
 ```
@@ -61,7 +61,7 @@ parameter to the configuration...
 module YourAwesomeApp
   class Application < Rails::Application
     # .... extra configuration
-    config.middleware.use 'FourOuFour', 'DelegatedClass'
+    config.middleware.use 'FourOFour', 'DelegatedClass'
   end
 end
 ```
@@ -81,9 +81,9 @@ class DelegatedClass
   end
 
   def random_msg
-    ['''Yo!, this is sad. I didn't know you got this. Sorry''',
-     '''Dear Mr. or Ms. I'm really sorry about this 404''',
-     '''Such is life'''
+    ["Yo!, this is sad. I didn't know you got this. Sorry ",
+     "Dear Mr. or Ms. I'm really sorry about this 404",
+     'Such is life'
     ].sample
   end
 end
