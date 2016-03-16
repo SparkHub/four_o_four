@@ -6,8 +6,6 @@ Status](https://travis-ci.org/esparta/four_o_four.svg?branch=master)](https://tr
 Climate](https://codeclimate.com/github/esparta/four_o_four/badges/gpa.svg)](https://codeclimate.com/github/esparta/four_o_four)
 [![Test
 Coverage](https://codeclimate.com/github/esparta/four_o_four/badges/coverage.svg)](https://codeclimate.com/github/esparta/four_o_four/coverage)
-[![Coverage
-Status](https://coveralls.io/repos/github/esparta/four_o_four/badge.svg?branch=master)](https://coveralls.io/github/esparta/four_o_four?branch=master)
 
 A super simple Rack middleware to capture 404 responses and change the response
 for any other logic.

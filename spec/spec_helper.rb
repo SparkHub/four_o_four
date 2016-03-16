@@ -6,9 +6,6 @@ require 'pry'
 require 'four_o_four'
 require 'rack/mock'
 
-require 'coveralls'
-Coveralls.wear!
-
 RSpec.configure do |config|
   config.color = true
   config.tty = true
