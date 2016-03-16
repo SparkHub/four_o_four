@@ -1,8 +1,17 @@
 # FourOFour
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/four_o_four`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Build
+Status](https://travis-ci.org/esparta/four_o_four.svg?branch=master)](https://travis-ci.org/esparta/four_o_four)
+[![Coverage
+Status](https://coveralls.io/repos/github/esparta/four_o_four/badge.svg?branch=master)](https://coveralls.io/github/esparta/four_o_four?branch=master)
 
-TODO: Delete this and the text above, and describe your gem
+A super simple Rack middleware to capture 404 responses and change the response
+for any other logic.
+
+With FourOFour you will be able to handle your 404 responses and change
+how your application behave dynamically and with the 'right' way: using a
+class for a delegation, separating all the concerns. Routes and logic should
+have their own space.
 
 ## Installation
 
@@ -22,7 +31,59 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+After install you need to add this gem as a Rack application within your
+application. On rails can be done like this:
+
+```ruby
+module YourAwesomeApp
+  class Application < Rails::Application
+    # .... extra configuration
+    config.middleware.use 'FourOuFour'
+  end
+end
+```
+
+This will activate every 404 and will take control of the 404 page displaying
+a generic page saying
+
+<h1>Default FourOuFour Application</h1>
+
+Please configure your middleware to pass a delegation class
+
+The interesting part comes with the configuration. You can pass a second
+parameter to the configuration...
+
+```ruby
+module YourAwesomeApp
+  class Application < Rails::Application
+    # .... extra configuration
+    config.middleware.use 'FourOuFour', 'DelegatedClass'
+  end
+end
+```
+
+In this case, the `DelegatedClass` can be any other ruby class that will take
+control of the 404 implementing your own logic. This still needs to be a Rack
+application compatible. But nothing complicated.
+
+```ruby
+class DelegatedClass
+  def call(env)
+    [200, {'Content-Type' => 'text/html'}, self ]
+  end
+
+  def each(&block)
+    block.call(random_msg)
+  end
+
+  def random_msg
+    ['''Yo!, this is sad. I didn't know you got this. Sorry''',
+     '''Dear Mr. or Ms. I'm really sorry about this 404''',
+     '''Such is life'''
+    ].sample
+  end
+end
+```
 
 ## Development
 
