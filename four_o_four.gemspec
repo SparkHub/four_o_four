@@ -20,16 +20,6 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/esparta/four_o_four'
   spec.license       = 'MIT'
 
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    fail <<-FAIL
-      RubyGems 2.0 or newer is required to protect against public gem pushes.
-    FAIL
-  end
-
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
@@ -48,6 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-remote'
   spec.add_development_dependency 'pry-nav'
-  #spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'codeclimate-test-reporter'
 end

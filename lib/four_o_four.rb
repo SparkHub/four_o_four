@@ -2,7 +2,7 @@
 require 'active_support/inflector'
 # A small Rack middleware to handle 404 responses with a delegation
 class FourOFour
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
   def initialize(app, delegation = nil)
     @app = app
     @delegation = delegation || "#{self.class}::DefaultApplication"
