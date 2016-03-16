@@ -1,0 +1,13 @@
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'pry'
+require 'four_o_four'
+require 'rack/mock'
+
+require 'coveralls'
+Coveralls.wear!
+
+RSpec.configure do |config|
+  config.color = true
+  config.tty = true
+  config.formatter = :documentation
+end
