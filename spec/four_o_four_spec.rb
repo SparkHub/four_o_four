@@ -20,6 +20,18 @@ describe FourOFour do
     end
   end
 
+  describe 'It can have options' do
+
+    describe 'It should skip specific formats if an option is given' do
+      let(:app) { proc { [404, {'Content-Type' => 'application/json'}, ['Hello World.']] } }
+      let(:stack) { described_class.new(app, nil, 'application/json') }
+      let(:request) { Rack::MockRequest.new(stack) }
+
+      let(:response) { request.get('/') }
+      it { expect(response.status).to eq(404) }
+    end
+  end
+
   describe 'Returns the Default Message on 404' do
     let(:app) do
       Rack::Builder.new do
