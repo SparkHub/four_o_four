@@ -1,7 +1,10 @@
 # Redirector...
+require 'utils/asset'
+
 # A small Rack middleware to handle 404 responses with a delegation
 class FourOFour
   VERSION = '0.0.2'
+
   def initialize(app, delegation = nil)
     @app = app
     @delegation = (delegation || "#{self.class}::DefaultApplication").to_s
@@ -9,7 +12,8 @@ class FourOFour
 
   def call(env)
     status, headers, response = @app.call(env)
-    if 404 == status
+
+    if !Utils::Asset.match(env['REQUEST_URI']) && 404 == status
       Object.const_get(@delegation).new.call(env)
     else
       [status, headers, response]
