@@ -87,6 +87,18 @@ class DelegatedClass
 end
 ```
 
+## Options
+
+### Skip specific formats
+
+By default, FourOFour will catch any request format. A parameter can be passed to the middleware initialization in order to skip specific formats. The middleware will then ignore these request types.
+
+Example: throw normal 404 page for `json` and `xml` formats:
+```ruby
+  config.middleware.insert_before ActionDispatch::RemoteIp, FourOFour, 'DelegatedClass',
+                                  ['application/json', 'application/xml']
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
