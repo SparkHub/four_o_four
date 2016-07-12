@@ -40,7 +40,7 @@ application. On rails can be done like this:
 module YourAwesomeApp
   class Application < Rails::Application
     # .... extra configuration
-    config.middleware.use 'FourOFour'
+    config.middleware.insert_before ActionDispatch::RemoteIp, FourOFour
   end
 end
 ```
@@ -59,7 +59,7 @@ parameter to the configuration...
 module YourAwesomeApp
   class Application < Rails::Application
     # .... extra configuration
-    config.middleware.use 'FourOFour', 'DelegatedClass'
+    config.middleware.insert_before ActionDispatch::RemoteIp, FourOFour, 'DelegatedClass'
   end
 end
 ```
