@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
     class for a delegation, separating all the concerns. Routes and logic should
     have their own space.
   DESCRIPTION
-  spec.homepage      = 'https://github.com/esparta/four_o_four'
+  spec.homepage      = 'https://github.com/SparkHub/four_o_four'
   spec.license       = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
