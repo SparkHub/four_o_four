@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'four_o_four'
-  spec.version       = '0.0.1'
+  spec.version       = '0.0.2'
   spec.authors       = ['Espartaco Palma']
   spec.email         = ['esparta@gmail.com']
 
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
     class for a delegation, separating all the concerns. Routes and logic should
     have their own space.
   DESCRIPTION
-  spec.homepage      = 'https://github.com/esparta/four_o_four'
+  spec.homepage      = 'https://github.com/SparkHub/four_o_four'
   spec.license       = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
