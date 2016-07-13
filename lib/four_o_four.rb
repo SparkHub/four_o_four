@@ -3,7 +3,7 @@ require 'utils/asset'
 
 # A small Rack middleware to handle 404 responses with a delegation
 class FourOFour
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
 
   def initialize(app, delegation = nil, skip_formats = [])
     @app = app
