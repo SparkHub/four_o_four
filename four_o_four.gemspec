@@ -2,9 +2,11 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
+require 'four_o_four/version'
+
 Gem::Specification.new do |spec|
   spec.name          = 'four_o_four'
-  spec.version       = '0.0.3'
+  spec.version       = FourOFour::VERSION
   spec.authors       = ['Espartaco Palma']
   spec.email         = ['esparta@gmail.com']
 
