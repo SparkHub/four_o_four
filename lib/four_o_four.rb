@@ -14,7 +14,8 @@ class FourOFour
   def call(env)
     status, headers, response = @app.call(env)
 
-    if !Utils::Asset.match(env['REQUEST_URI']) && can_process_request?(status, headers)
+    if processable_request_method?(env) && !Utils::Asset.match(env['REQUEST_URI']) &&
+       can_process_request?(status, headers)
       Object.const_get(@delegation).new.call(env)
     else
       [status, headers, response]
@@ -60,5 +61,15 @@ class FourOFour
   # @api private
   def processable_type?(content_type)
     content_type.nil? || (content_type && content_type !~ @skip_formats)
+  end
+
+  # Return true if the request method is a GET
+  #
+  # @param  [Hash]    env Rack environment
+  # @return [Boolean]
+  #
+  # @api private
+  def processable_request_method?(env)
+    env['REQUEST_METHOD'] == 'GET'
   end
 end

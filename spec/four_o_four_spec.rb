@@ -20,6 +20,15 @@ describe FourOFour do
     end
   end
 
+  describe 'Should only process on GET request methods' do
+    let(:app) { proc { [404, {}, ['Hello World.']] } }
+    let(:stack) { described_class.new(app) }
+    let(:request) { Rack::MockRequest.new(stack) }
+
+    let(:response) { request.post('/') }
+    it { expect(response.status).to eq(404) }
+  end
+
   describe 'It can have options' do
 
     describe 'It should skip specific formats if an option is given' do
